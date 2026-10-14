@@ -2,125 +2,82 @@
 
 ## Projects and Project Memberships
 
-This project extends Programming Assignment 2 by adding project creation, project viewing, and project membership management to the existing full-stack Login and Signup application.
+This project builds on Programming Assignment 2 by adding projects and project memberships to the existing full-stack Signup and Login application.
 
-The application uses:
-
-- React
-- Node.js
-- Express
-- MongoDB
-- Mongoose
-
-The interface continues the purple and gold school-inspired styling used in the previous assignment.
+The application was built using React, Node.js, Express, MongoDB, and Mongoose.
 
 ## Features
 
-### User Accounts
+- User Signup and Login
+- Create projects with a name, description, status, and Project Lead
+- View existing projects
+- Select Project Leads from registered users
+- View the members of a project
+- Add registered users to projects
+- Remove non-lead members from projects
+- Prevent duplicate project memberships
+- Prevent the Project Lead from being removed
+- Allow users to participate in multiple projects
 
-The existing Signup and Login functionality from Programming Assignment 2 is still included.
+Project and user relationships are stored using MongoDB ObjectId references.
 
-Users can:
+## Running the Project
 
-- Create an account
-- Log in using a username and password
-- Receive clear success and error messages
-- Log out of the application
+The backend and frontend need to be run in separate terminals.
 
-After a successful login, the user can access the project-management features.
+### Backend
 
-### Create Projects
+From the project folder:
 
-Registered users can create software projects with:
+```bash
+cd server
+npm install
+node server.js
+```
 
-- Project Name
-- Description
-- Status
-- Project Lead
+The backend runs at:
 
-Available project statuses are:
+```text
+http://localhost:5000
+```
 
-- Planning
-- Active
-- Completed
+The server requires a `.env` file inside the `server` folder containing a valid MongoDB connection string:
 
-The Project Lead is selected from users already registered in the application.
+```text
+MONGO_URI=your_mongodb_connection_string
+```
 
-When a project is created, the selected Project Lead is automatically added as a member of the project.
+The `.env` file is not included in the GitHub repository.
 
-### View Projects
+### Frontend
 
-The Projects interface displays the projects stored in MongoDB.
+Open a second terminal:
 
-Each project displays:
+```bash
+cd client
+npm install
+npm run dev
+```
 
-- Project Name
-- Description
-- Status
-- Project Lead
+The frontend runs at:
 
-The Project Lead is displayed using the user's information instead of only displaying a MongoDB ObjectId.
+```text
+http://localhost:5173
+```
 
-### Manage Project Memberships
+Open that address in a browser to use the application.
 
-The Memberships interface allows users to:
+## Database
 
-- Select a project
-- View the current members of the project
-- Add a registered user to the project
-- Remove a non-lead member from the project
+The application uses three MongoDB collections:
 
-The application also enforces the following membership rules:
+- Users
+- Projects
+- ProjectMemberships
 
-- A user cannot be added to the same project more than once
-- The Project Lead is automatically a project member
-- The current Project Lead cannot be removed
-- A user can belong to multiple different projects
-- A project can contain multiple users
+ProjectMemberships use the Project and User ObjectIds to represent the many-to-many relationship between users and projects.
 
-## MongoDB Collections
+## Author
 
-The application uses three main MongoDB collections:
-
-### Users
-
-Stores registered application users.
-
-Example fields:
-
-- `_id`
-- `f_name`
-- `l_name`
-- `username`
-- `password`
-
-### Projects
-
-Stores project information.
-
-Example fields:
-
-- `_id`
-- `name`
-- `description`
-- `status`
-- `project_lead_id`
-
-`project_lead_id` stores an ObjectId reference to an existing User.
-
-### ProjectMemberships
-
-Represents the relationship between users and projects.
-
-Example fields:
-
-- `_id`
-- `project_id`
-- `user_id`
-
-Both fields use MongoDB ObjectId references rather than storing copied project names or usernames.
-
-This allows the application to represent a many-to-many relationship:
-
-- One user may participate in multiple projects
-- One project may contain multiple users
+William Taylor  
+ICSI 418Y - Software Engineering
