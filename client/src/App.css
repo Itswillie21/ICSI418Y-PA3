@@ -96,3 +96,81 @@ button:hover {
 .switch-button:hover {
     background-color: #f4f1f7;
 }
+
+/* PA3 navigation */
+.site-header {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+.site-header h1 {
+    margin-bottom: 14px;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.main-nav button {
+    margin-top: 0;
+}
+
+/* Project forms */
+textarea,
+select {
+    padding: 11px;
+    font-size: 16px;
+    border: 1px solid #b8b8b8;
+    border-radius: 6px;
+    background-color: white;
+    color: #222222;
+}
+
+textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.project-card,
+.projects-section,
+.membership-section {
+    width: 100%;
+    max-width: 700px;
+}
+
+.project-list {
+    display: grid;
+    gap: 16px;
+}
+
+.project-item {
+    padding: 18px;
+    border: 1px solid #d7b45a;
+    border-radius: 8px;
+}
+
+.project-item h2 {
+    color: #4b286d;
+}
+
+.member-list {
+    margin: 16px 0;
+}
+
+.member-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid #dddddd;
+}
+
+.member-item button {
+    width: auto;
+    margin-top: 0;
+}
